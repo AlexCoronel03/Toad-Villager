@@ -1,82 +1,74 @@
 # Toad Villagers (Fabric, Minecraft 1.21.1)
 
-Un mod de Fabric que añade a **Toad** como un aldeano completo: modelo 3D propio, texturas propias, seis colores de
-sombrero, sonidos propios y comportamiento de aldeano de vanilla (oficios, comercio, camas, pánico, aldeas).
+A Fabric mod that adds **Toad** as a full villager: a custom 3D model, custom textures, six cap colours, custom
+sounds and vanilla villager behaviour (professions, trading, beds, panic, villages).
 
-> Proyecto de aficionado, no oficial. El personaje Toad pertenece a Nintendo; este mod no está afiliado ni
-> respaldado por Nintendo ni por Mojang.
+> Unofficial fan project. The Toad character belongs to Nintendo; this mod is not affiliated with or endorsed by
+> Nintendo or Mojang.
 
-## Características
+## Features
 
-- **Entidad propia** `toadmod:toad`, subclase de `Villager`: hereda el cerebro, el horario, las camas, los puntos de
-  interés, el pánico, el chisme, la cría y el comercio de vanilla.
-- **Oficios como un aldeano normal.** Nace sin empleo, y si hay una estación de trabajo libre cerca (composter,
-  atril, mesa de herrería...) toma el oficio vanilla y sus intercambios. Pierde el oficio si le quitas la estación
-  antes de haber comerciado, igual que un aldeano.
-- **Seis colores** del parche del sombrero (rojo, verde, magenta, azul, lima, amarillo), elegidos al azar con la misma
-  probabilidad al aparecer. Se guardan en NBT (`CapColor`) y se sincronizan con los clientes.
-- **Modelo 3D** en formato Blockbench/Bedrock: [`toad.geo.json`](src/main/resources/assets/toadmod/models/entity/toad.geo.json).
-  El juego carga ese mismo archivo, así que lo que editas en Blockbench es lo que se renderiza.
-- **Animaciones** procedurales: reposo, caminar, huir, comerciar, daño y muerte.
-- **Sonidos propios**: caminar, daño, muerte, aceptar/rechazar trato, y "sin trabajo" al interactuar sin oficio.
-- **Aparición**: 1-3 toads al generarse por primera vez una aldea, más una aparición natural ocasional dentro de
-  aldeas (máximo 3 cerca). Huevo de aparición y `/summon toadmod:toad`.
-- Los aldeanos de vanilla no se tocan.
+- **Custom entity** `toadmod:toad`, a subclass of `Villager`. It inherits the complete vanilla brain: schedule, beds,
+  points of interest, panic, gossip, breeding and the vanilla trading interface.
+- **Professions like a normal villager.** A toad is born unemployed. If a free job-site block is nearby (composter,
+  lectern, smithing table, ...) it takes the matching vanilla profession and its trades. It loses the profession if
+  the job site is removed before it has traded, exactly like a villager.
+- **Six cap colours** for the cap patch (red, green, magenta, blue, lime, yellow), chosen at random with equal
+  probability when a toad is created. The colour is saved in NBT (`CapColor`) and synced to clients.
+- **3D model** in Blockbench/Bedrock format:
+  [`toad.geo.json`](src/main/resources/assets/toadmod/models/entity/toad.geo.json). The game loads this same file, so
+  what you edit in Blockbench is what gets rendered.
+- **Animations** (procedural): idle, walking, fleeing, trading, hurt and death.
+- **Custom sounds**: walking, hurt, death, trade accepted, trade declined, and a "no job" sound when you interact
+  with a toad that has no profession.
+- **Spawning**: 1-3 toads are placed in a village the first time its chunk is generated, plus an occasional natural
+  spawn inside villages (at most 3 nearby). Also available through the spawn egg and `/summon toadmod:toad`.
+- Vanilla villagers are left untouched.
 
-## Instalación
+## Installation
 
-Requisitos: Minecraft Java **1.21.1**, [Fabric Loader](https://fabricmc.net/use/) ≥ 0.16 y
+Requirements: Minecraft Java **1.21.1**, [Fabric Loader](https://fabricmc.net/use/) 0.16 or newer, and
 [Fabric API](https://modrinth.com/mod/fabric-api).
 
-1. Copia `toadmod-<versión>.jar` y Fabric API a la carpeta `mods`.
-2. **Clientes:** el mod es necesario en cada cliente (modelo, texturas y sonidos).
-3. **Servidor dedicado:** copia el mismo `.jar` y Fabric API a `mods` del servidor. No carga clases de cliente.
+1. Put `toadmod-<version>.jar` and Fabric API in your `mods` folder.
+2. Start the game.
 
-## Compilar
+## Building
 
-Requiere JDK 21.
+Requires JDK 21.
 
 ```bash
 ./gradlew build
 ```
 
-El JAR queda en `build/libs/toadmod-<versión>.jar`.
+The JAR is written to `build/libs/toadmod-<version>.jar`.
 
-## Editar el modelo y las texturas
+## Editing the model and textures
 
-- Modelo: abre `src/main/resources/assets/toadmod/models/entity/toad.geo.json` en Blockbench (Bedrock Entity).
-- Textura base: `tools/source/toad_base_red.png` (128×128, variante roja). Las otras cinco se generan recoloreando
-  solo los píxeles rojos del parche:
+- Model: open `src/main/resources/assets/toadmod/models/entity/toad.geo.json` in Blockbench (Bedrock Entity).
+- Base texture: `tools/source/toad_base_red.png` (128x128, red variant). The other five colours are generated by
+  recolouring only the red cap-patch pixels:
 
 ```bash
-python tools/generate_textures.py   # requiere Pillow
+python tools/generate_textures.py   # requires Pillow
 ```
 
-- Sonidos: los originales están en `sound-sources/`; el juego usa los `.ogg` mono de
+- Sounds: the original files are in `sound-sources/`; the game uses the mono `.ogg` files in
   `assets/toadmod/sounds/entity/toad/`.
 
-## Verificación visual (solo desarrollo)
+## Visual verification (development only)
 
-`ToadPreview` es un arnés opcional que no hace nada salvo que se arranque el cliente con `-PtoadPreview`:
+`ToadPreview` is an optional harness that does nothing unless the client is started with `-PtoadPreview`:
 
 ```bash
-./gradlew runClient -PtoadPreview          # capturas, comercio, animaciones
-./gradlew runClient -PtoadPreview=village  # aparición en una aldea real
-./gradlew runClient -PtoadPreview=job      # toma y pérdida de oficio
+./gradlew runClient -PtoadPreview          # screenshots, trading, animations
+./gradlew runClient -PtoadPreview=village  # spawning in a real village
+./gradlew runClient -PtoadPreview=job      # taking and losing a profession
 ```
 
-## Estado y limitaciones
+## Known limitations
 
-Probado en el cliente de desarrollo (1.21.1): renderizado de los seis colores, intercambio completo, persistencia
-del color y de las ofertas por NBT, caminar/huir con IA real, aparición en una aldea nueva, toma y pérdida de oficio
-y los sonidos.
-
-**No probado todavía:** servidor dedicado, multijugador real.
-
-Limitaciones conocidas:
-
-- Los toads solo aparecen en aldeas **generadas después** de instalar el mod; en las existentes usa el huevo.
-- Un aldeano zombi curado vuelve a ser un aldeano vanilla, no un Toad.
-- Las animaciones son procedurales (código), no archivos de animación.
-- No hay sonido de ambiente propio: el Toad está en silencio en reposo.
-- No hay captura de pantalla de la interfaz de comercio en este repositorio.
+- Toads only appear in villages generated **after** the mod is installed; in existing villages use the spawn egg.
+- A cured zombie villager becomes a vanilla villager, not a Toad.
+- Animations are procedural (code), not animation files.
+- There is no idle/ambient sound: a toad is silent while standing still.
