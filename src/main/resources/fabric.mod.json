@@ -3,7 +3,7 @@
   "id": "toadmod",
   "version": "${version}",
   "name": "Toad Villagers",
-  "description": "Adds Toad, a fully custom 3D villager-like merchant with six cap colours, its own profession and trades.",
+  "description": "Adds Toad, a custom 3D villager with six cap colours that takes vanilla professions from job sites and trades like a normal villager.",
   "authors": ["alexcoronel414"],
   "contact": {},
   "license": "All-Rights-Reserved",
