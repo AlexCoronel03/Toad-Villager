@@ -1,0 +1,50 @@
+{
+  "entity.toad.walk": {
+    "sounds": [
+      {
+        "name": "toadmod:entity/toad/walk"
+      }
+    ],
+    "subtitle": "subtitles.toadmod.toad.walk"
+  },
+  "entity.toad.hurt": {
+    "sounds": [
+      {
+        "name": "toadmod:entity/toad/hurt"
+      }
+    ],
+    "subtitle": "subtitles.toadmod.toad.hurt"
+  },
+  "entity.toad.death": {
+    "sounds": [
+      {
+        "name": "toadmod:entity/toad/death"
+      }
+    ],
+    "subtitle": "subtitles.toadmod.toad.death"
+  },
+  "entity.toad.trade_yes": {
+    "sounds": [
+      {
+        "name": "toadmod:entity/toad/trade_yes"
+      }
+    ],
+    "subtitle": "subtitles.toadmod.toad.trade_yes"
+  },
+  "entity.toad.trade_no": {
+    "sounds": [
+      {
+        "name": "toadmod:entity/toad/trade_no"
+      }
+    ],
+    "subtitle": "subtitles.toadmod.toad.trade_no"
+  },
+  "entity.toad.no_job": {
+    "sounds": [
+      {
+        "name": "toadmod:entity/toad/no_job"
+      }
+    ],
+    "subtitle": "subtitles.toadmod.toad.no_job"
+  }
+}

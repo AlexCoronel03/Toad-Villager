@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "toadmod",
+  "version": "${version}",
+  "name": "Toad Villagers",
+  "description": "Adds Toad, a fully custom 3D villager-like merchant with six cap colours, its own profession and trades.",
+  "authors": ["alexcoronel414"],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/toadmod/textures/item/toad_spawn_egg.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.alexcoronel.toadmod.ToadMod"
+    ],
+    "client": [
+      "com.alexcoronel.toadmod.client.ToadModClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "fabric-api": "*",
+    "minecraft": "1.21.1",
+    "java": ">=21"
+  }
+}
