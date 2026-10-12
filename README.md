@@ -25,6 +25,26 @@ sounds and vanilla villager behaviour (professions, trading, beds, panic, villag
   spawn inside villages (at most 3 nearby). Also available through the spawn egg and `/summon toadmod:toad`.
 - Vanilla villagers are left untouched.
 
+## Screenshots
+
+Captured in the Minecraft 1.21.1 development client.
+
+All six cap colours:
+
+![All six cap colours](docs/screenshots/all-colours.png)
+
+| Front | Three-quarter |
+| --- | --- |
+| ![Front view](docs/screenshots/front.png) | ![Three-quarter view](docs/screenshots/three-quarter.png) |
+
+| Side | Back |
+| --- | --- |
+| ![Side view](docs/screenshots/side.png) | ![Back view](docs/screenshots/back.png) |
+
+Vanilla trading interface (a toad that took the Farmer profession):
+
+![Trading screen](docs/screenshots/trading.png)
+
 ## Installation
 
 Requirements: Minecraft Java **1.21.1**, [Fabric Loader](https://fabricmc.net/use/) 0.16 or newer, and

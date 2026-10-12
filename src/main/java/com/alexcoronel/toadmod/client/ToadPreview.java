@@ -133,7 +133,8 @@ final class ToadPreview {
         level.setWeatherParameters(6000, 0, false, false);
         player.setGameMode(GameType.CREATIVE);
 
-        BlockPos o = player.blockPosition();
+        // A raised, open-sky platform: the spawn point can be underground or in water.
+        BlockPos o = new BlockPos(player.blockPosition().getX(), 160, player.blockPosition().getZ());
         for (int dx = -12; dx <= 12; dx++) {
             for (int dz = -4; dz <= 14; dz++) {
                 level.setBlockAndUpdate(o.offset(dx, -1, dz), Blocks.GRASS_BLOCK.defaultBlockState());
